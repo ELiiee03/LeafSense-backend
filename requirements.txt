@@ -1,0 +1,4 @@
+Flask==2.3.2
+Pytorch
+Pillow==9.5.0
+flask-cors==3.1.0
