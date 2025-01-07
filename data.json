@@ -1,0 +1,59 @@
+[
+    {
+      "id": 1,
+      "name": "Maple Leaf",
+      "scientificName": "Acer spp.",
+      "description": "Maple leaves are palmate, lobed leaves commonly found in temperate regions. They are known for their vibrant red, orange, and yellow fall colors.",
+      "uses": "Maple leaves are often used as symbols of Canada and are used in decoration during the fall. The sap of some maple species is used to make maple syrup.",
+      "habitat": "Temperate regions, mainly in North America, Europe, and Asia."
+    },
+    {
+      "id": 2,
+      "name": "Oak Leaf",
+      "scientificName": "Quercus spp.",
+      "description": "Oak leaves are lobed and can vary in shape, with some species having deeply lobed leaves, while others are more rounded. They are typically thick and leathery.",
+      "uses": "Oak leaves are symbolic of strength and endurance. The wood of oak trees is used in furniture, flooring, and barrels for aging wine and whiskey.",
+      "habitat": "Widespread in the Northern Hemisphere, including Europe, North America, and Asia."
+    },
+    {
+      "id": 3,
+      "name": "Pine Needle",
+      "scientificName": "Pinus spp.",
+      "description": "Pine needles are long, thin, and evergreen. They grow in clusters and can be found in various lengths depending on the species.",
+      "uses": "Pine needles are used for making essential oils, herbal teas, and as a natural mulch. Pine wood is widely used in construction and paper manufacturing.",
+      "habitat": "Widely distributed in temperate and subtropical regions of the Northern Hemisphere."
+    },
+    {
+      "id": 4,
+      "name": "Birch Leaf",
+      "scientificName": "Betula spp.",
+      "description": "Birch leaves are simple, alternate, and ovate with serrated edges. They are typically bright green, turning yellow in autumn.",
+      "uses": "Birch leaves have traditional medicinal uses, such as in herbal teas. The bark is used in traditional crafts, and birch wood is used for furniture and firewood.",
+      "habitat": "Common in cooler regions of the Northern Hemisphere, such as North America, Europe, and Asia."
+    },
+    {
+      "id": 5,
+      "name": "Eucalyptus Leaf",
+      "scientificName": "Eucalyptus spp.",
+      "description": "Eucalyptus leaves are elongated, leathery, and aromatic. They are evergreen and contain essential oils.",
+      "uses": "Eucalyptus leaves are used for their medicinal properties, especially in respiratory treatments. The wood is used in construction and for making paper.",
+      "habitat": "Native to Australia but also found in parts of Asia, Europe, and the Americas."
+    },
+    {
+      "id": 6,
+      "name": "Bamboo Leaf",
+      "scientificName": "Bambusoideae",
+      "description": "Bamboo leaves are narrow, elongated, and evergreen. They grow on bamboo plants, which are actually giant grasses.",
+      "uses": "Bamboo leaves are used in traditional medicine, cooking (as wrappers), and crafts. Bamboo wood is widely used for construction, furniture, and paper.",
+      "habitat": "Tropical and subtropical regions, especially in Asia and the Americas."
+    },
+    {
+      "id": 7,
+      "name": "Palm Leaf",
+      "scientificName": "Arecaceae",
+      "description": "Palm leaves are large, often fan-shaped or feather-shaped. They are evergreen and grow on palm trees in tropical regions.",
+      "uses": "Palm leaves are used in traditional roofing materials, weaving, and as decoration. The wood is used for construction and crafts.",
+      "habitat": "Primarily found in tropical and subtropical regions around the world."
+    }
+  ]
+  
