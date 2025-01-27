@@ -2,14 +2,14 @@
   {
     "id": 0,
     "name": "Jack Fruit",
-    "scientificName": "Broussonetia Papyrifera",
+    "scientificName": "Artocarpus heterophyllus",
     "familyName": "dewyfbewgf",
     "description": "Maple leaves are palmate, lobed leaves commonly found in temperate regions. They are known for their vibrant red, orange, and yellow fall colors.",
     "habitat": "Temperate regions, mainly in North America, Europe, and Asia."
   },
   {
     "id": 1,
-    "name": "Oak Leaf",
+    "name": "Paper Mulberry",
     "scientificName": "Broussonetia Papyrifera",
     "familyName": "fhenre",
     "description": "Oak leaves are lobed and can vary in shape, with some species having deeply lobed leaves, while others are more rounded. They are typically thick and leathery.",
@@ -17,7 +17,7 @@
   },
   {
     "id": 2,
-    "name": "Jackfruit Leaf",
+    "name": "Cassava",
     "scientificName": "Manihot Esculenta",
     "familyName": "ehrewbfg",
     "description": "Pine needles are long, thin, and evergreen. They grow in clusters and can be found in various lengths depending on the species.",
@@ -25,7 +25,7 @@
   },
   {
     "id": 3,
-    "name": "Birch Leaf",
+    "name": "Breadfruit",
     "scientificName": "Samanea Saman",
     "familyName": "dweufnewf",
     "description": "Birch leaves are simple, alternate, and ovate with serrated edges. They are typically bright green, turning yellow in autumn.",

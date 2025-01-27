@@ -38,11 +38,17 @@ def predict():
         # Perform the prediction
         with torch.no_grad():
             output = model(input_tensor)
-            _, predicted_class = torch.max(output, 1)
+            probabilities = torch.nn.functional.softmax(output, dim=1)
+            confidence, predicted_class = torch.max(probabilities, 1)
             predicted_class = predicted_class.item()  # Extract the predicted class
+            confidence = confidence.item()  # Extract the confidence score
 
         # Get leaf information based on the predicted class
         leaf_info = class_to_leaf_info.get(predicted_class, {"error": "Class ID not found"})
+        
+        # Ensure leaf_info is a copy to avoid modifying the original data
+        leaf_info = leaf_info.copy()
+        leaf_info["confidence"] = confidence  # Add confidence score to the response
 
         # Return the result in JSON format
         return jsonify(leaf_info)
