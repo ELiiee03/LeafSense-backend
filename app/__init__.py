@@ -21,7 +21,7 @@ def create_app():
     # Configure CORS
     CORS(app, resources={
         r"/*": {
-            "origins": ["http://localhost:8100", "capacitor://localhost", "http://localhost"],
+            "origins": ["http://localhost:8100", "capacitor://localhost", "http://localhost", "http://192.168.1.88" ],
             "methods": ["GET", "POST", "OPTIONS"],
             "allow_headers": ["Content-Type", "Authorization"]
         }
