@@ -3,6 +3,7 @@ from PIL import Image
 import io
 import torch
 import json
+import base64
 from mobilenet_v3_small_weights.mobilenet_v3 import load_model
 from utils.model_utils import preprocess_image
 
@@ -20,19 +21,59 @@ class_to_leaf_info = {leaf["id"]: leaf for leaf in leaf_data}
 
 # Prediction endpoint
 @main.route("/predict", methods=["POST"])
-def predict():
-    if 'file' not in request.files:
-        print("No file part in request.files")
-        return jsonify({"error": "No file provided"}), 400
+# def predict():
+#     if 'file' not in request.files:
+#         print("No file part in request.files")
+#         return jsonify({"error": "No file provided"}), 400
 
-    file = request.files["file"]
-    if file.filename == '':
-        print("No selected file")
-        return jsonify({"error": "No file provided"}), 400
+#     file = request.files["file"]
+#     if file.filename == '':
+#         print("No selected file")
+#         return jsonify({"error": "No file provided"}), 400
+
+#     try:
+#         # Open the image file and preprocess it
+#         image = Image.open(io.BytesIO(file.read())).convert("RGB")
+#         input_tensor = preprocess_image(image)
+
+#         # Perform the prediction
+#         with torch.no_grad():
+#             output = model(input_tensor)
+#             probabilities = torch.nn.functional.softmax(output, dim=1)
+#             confidence, predicted_class = torch.max(probabilities, 1)
+#             predicted_class = predicted_class.item()  # Extract the predicted class
+#             confidence = confidence.item()  # Extract the confidence score
+
+#         # Get leaf information based on the predicted class
+#         leaf_info = class_to_leaf_info.get(predicted_class, {"error": "Class ID not found"})
+        
+#         # Ensure leaf_info is a copy to avoid modifying the original data
+#         leaf_info = leaf_info.copy()
+#         leaf_info["confidence"] = confidence  # Add confidence score to the response
+
+#         # Return the result in JSON format
+#         return jsonify(leaf_info)
+
+#     except Exception as e:
+#         print(f"Error during prediction: {e}")
+#         return jsonify({"error": "Prediction failed"}), 500
+def predict():
+    # Check for JSON data with base64 image
+    if not request.json or 'image' not in request.json:
+        print("No image data in request")
+        return jsonify({"error": "No image data provided"}), 400
 
     try:
-        # Open the image file and preprocess it
-        image = Image.open(io.BytesIO(file.read())).convert("RGB")
+        # Get base64 image data from request
+        image_data = request.json['image']
+        
+        # Handle data URL format if present
+        if 'base64,' in image_data:
+            image_data = image_data.split('base64,')[1]
+            
+        # Decode base64 to bytes
+        image_bytes = base64.b64decode(image_data)
+        image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
         input_tensor = preprocess_image(image)
 
         # Perform the prediction
@@ -40,17 +81,14 @@ def predict():
             output = model(input_tensor)
             probabilities = torch.nn.functional.softmax(output, dim=1)
             confidence, predicted_class = torch.max(probabilities, 1)
-            predicted_class = predicted_class.item()  # Extract the predicted class
-            confidence = confidence.item()  # Extract the confidence score
+            predicted_class = predicted_class.item()
+            confidence = confidence.item()
 
-        # Get leaf information based on the predicted class
+        # Get leaf information
         leaf_info = class_to_leaf_info.get(predicted_class, {"error": "Class ID not found"})
-        
-        # Ensure leaf_info is a copy to avoid modifying the original data
         leaf_info = leaf_info.copy()
-        leaf_info["confidence"] = confidence  # Add confidence score to the response
+        leaf_info["confidence"] = confidence
 
-        # Return the result in JSON format
         return jsonify(leaf_info)
 
     except Exception as e:
