@@ -2,7 +2,7 @@ from PIL import Image
 from torchvision import transforms
 
 def preprocess_image(image: Image.Image):
-    # Define preprocessing pipeline
+    # Define preprocessing pipeline_
     preprocess = transforms.Compose([
         transforms.Resize((224, 224)),  # MobileNetV3 typically uses 224x224 images
         transforms.ToTensor(),

@@ -16,7 +16,7 @@ from flask_cors import CORS
 from .routes import main
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='../assets', static_url_path='/assets')
 
     # app.config.update(
     #     # SERVER_NAME='0.0.0.0:5000',
@@ -38,8 +38,19 @@ def create_app():
         "allow_headers": ["*"]
     }
 })
+     # Add a special handler for OPTIONS requests
+    # @app.after_request
+    # def after_request(response):
+    #     # Fix for preflight requests
+    #     if request.method == "OPTIONS":
+    #         response.headers.add('Access-Control-Allow-Origin', '*')
+    #         response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    #         response.headers.add('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+    #     return response
+    
     
     # Register blueprint
     app.register_blueprint(main)
+
     
     return app
