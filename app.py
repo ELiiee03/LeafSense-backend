@@ -14,8 +14,6 @@ if __name__ == "__main__":
         debug=True, 
         host='0.0.0.0',
         port=5000,
-        # ssl_context=('cert.pem', 'key.pem'),
-        # Add these options for development
         use_reloader=False,
         threaded=True
     )

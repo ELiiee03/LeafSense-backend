@@ -1,72 +1,3 @@
-# from flask import Blueprint, request, jsonify
-# from PIL import Image
-# import io
-# import torch
-# import json
-# import base64
-# from mobilenet_v3_small_weights.mobilenet_v3 import load_model
-# from utils.model_utils import preprocess_image
-
-# main = Blueprint('main', __name__)
-
-# @main.route("/test", methods=["GET"])
-# def test_connection():
-#     return jsonify({
-#         "status": "ok", 
-#         "message": "Connection successful",
-#         "remote_ip": request.remote_addr
-#     })
-
-# # Load the model at the start to avoid reloading on each request
-# model = load_model("mobilenet_v3_small_weights/mobilenetv3_weights.pth")  # Path to your model file
-
-# # Load leaf data from JSON file
-# with open("data.json", "r") as f:
-#     leaf_data = json.load(f)
-
-# # Create a mapping from class IDs to leaf information
-# class_to_leaf_info = {leaf["id"]: leaf for leaf in leaf_data}
-
-# # Prediction endpoint
-# @main.route("/predict", methods=["POST"])
-# def predict():
-#     # Check for JSON data with base64 image
-#     if not request.json or 'image' not in request.json:
-#         print("No image data in request")
-#         return jsonify({"error": "No image data provided"}), 400
-
-#     try:
-#         # Get base64 image data from request
-#         image_data = request.json['image']
-        
-#         # Handle data URL format if present
-#         if 'base64,' in image_data:
-#             image_data = image_data.split('base64,')[1]
-            
-#         # Decode base64 to bytes
-#         image_bytes = base64.b64decode(image_data)
-#         image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
-#         input_tensor = preprocess_image(image)
-
-#         # Perform the prediction
-#         with torch.no_grad():
-#             output = model(input_tensor)
-#             probabilities = torch.nn.functional.softmax(output, dim=1)
-#             confidence, predicted_class = torch.max(probabilities, 1)
-#             predicted_class = predicted_class.item()
-#             confidence = confidence.item()
-
-#         # Get leaf information
-#         leaf_info = class_to_leaf_info.get(predicted_class, {"error": "Class ID not found"})
-#         leaf_info = leaf_info.copy()
-#         leaf_info["confidence"] = confidence
-
-#         return jsonify(leaf_info)
-
-#     except Exception as e:
-#         print(f"Error during prediction: {e}")
-#         return jsonify({"error": "Prediction failed"}), 500
-
 from flask import Blueprint, request, jsonify
 from PIL import Image
 import io
@@ -74,8 +5,8 @@ import torch
 import json
 import base64
 import os
-from mobilenet_v3_small_weights.mobilenet_v3 import load_model
-from utils.model_utils import preprocess_image
+from mobilenet_v3_large_weights.mobilenet_v3 import load_model
+from utils.model_utils import preprocess_image, get_prediction_info
 
 main = Blueprint('main', __name__)
 
@@ -92,7 +23,7 @@ main = Blueprint('main', __name__)
 #     })
 
 # Load the model at the start to avoid reloading on each request
-model = load_model("mobilenet_v3_small_weights/mobilenetv3_weights.pth")  # Path to your model file
+model = load_model("mobilenet_v3_large_weights/mobilenetv3_best_accuracy7.pth")  # Path to your model file
 
 # Load leaf data from JSON file
 with open("data.json", "r") as f:
@@ -145,20 +76,46 @@ def predict():
         # Decode base64 to bytes
         image_bytes = base64.b64decode(image_data)
         image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+        
+        # Log image details for debugging
+        print(f"Image size: {image.size}, mode: {image.mode}")
+        print(f"Image format: {image.format}")
+        
+        # Show EXIF data if available
+        if hasattr(image, '_getexif') and image._getexif() is not None:
+            print("EXIF data present in image")
+        
         input_tensor = preprocess_image(image)
+        # Print tensor shape and values for debugging
+        print(f"Input tensor shape: {input_tensor.shape}")
+        print(f"Input tensor min: {input_tensor.min().item()}, max: {input_tensor.max().item()}")
 
         # Perform the prediction
         with torch.no_grad():
             output = model(input_tensor)
-            probabilities = torch.nn.functional.softmax(output, dim=1)
-            confidence, predicted_class = torch.max(probabilities, 1)
-            predicted_class = predicted_class.item()
-            confidence = confidence.item()
+            
+            # Get prediction details
+            prediction_info = get_prediction_info(output, top_k=5)
+            predicted_class = prediction_info["top_classes"][0]
+            confidence = prediction_info["confidences"][0] / 100  # Convert back to 0-1 scale
+            
+            print(f"Top-5 classes: {prediction_info['top_classes']}")
+            print(f"Top-5 confidences: {[f'{conf:.2f}%' for conf in prediction_info['confidences']]}")
+            
+            # Also print all confidence scores for debugging
+            probabilities = torch.nn.functional.softmax(output, dim=1)[0]
+            print("All confidence scores:")
+            for idx, prob in enumerate(probabilities.tolist()):
+                print(f"Class {idx}: {prob:.4f} ({prob*100:.2f}%)")
 
         # Get leaf information
         leaf_info = class_to_leaf_info.get(predicted_class, {"error": "Class ID not found"})
         leaf_info = leaf_info.copy()
         leaf_info["confidence"] = confidence
+        leaf_info["all_predictions"] = {
+            "classes": prediction_info["top_classes"],
+            "confidences": prediction_info["confidences"]
+        }
         
         # Add image data if available
         if "imagePath" in leaf_info:
@@ -179,4 +136,4 @@ def predict():
     except Exception as e:
         print(f"Error during prediction: {e}")
         return jsonify({"error": str(e)}), 500 
-        # return jsonify({"error": "Prediction failed"}), 500 
+        # return jsonify({"error": "Prediction failed"}), 500
