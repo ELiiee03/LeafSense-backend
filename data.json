@@ -96,6 +96,7 @@
       "trunk": "Massive, buttressed at base, often with thorns or spines, especially when young",
       "leaves": "Palmate compound with 5-9 lanceolate leaflets"
     },
+    "growthHabits": "tree",
     "ethnobotanicalUses": {
       "edible": "Young leaves and seedpods can be cooked as vegetables; seeds can be roasted and eaten or pressed for oil",
       "medicinal": "Various parts used in traditional medicine for treating fever, asthma, kidney diseases, and diabetes; bark decoction used for digestive ailments",
@@ -142,6 +143,7 @@
       "trunk": "Slender, unbranched, often curved or leaning, marked with rings",
       "leaves": "Large pinnate fronds with numerous narrow leaflets arranged along a central rachis"
     },
+    "growthHabits": "tree",
     "ethnobotanicalUses": {
       "edible": "Coconut water as beverage; white meat eaten fresh or dried as copra; coconut milk and cream for cooking; palm heart (apical bud) as vegetable; sap tapped for palm sugar",
       "medicinal": "Coconut water as rehydration fluid; oil used for skin conditions; various preparations used in traditional medicine for diabetes, kidney stones, and digestive issues",
@@ -187,6 +189,7 @@
       "trunk": "Straight with buttresses at base in mature specimens",
       "leaves": "Elliptical to oblong, alternate arrangement, 10-15 cm long"
     },
+    "growthHabits": "tree",
     "ethnobotanicalUses": {
       "edible": "Fruit pulp consumed fresh or used in desserts, ice cream, and candies; seeds can be roasted and eaten",
       "medicinal": "Traditional use for fever reduction, anti-inflammatory properties, and as a tonic for various ailments",
@@ -226,6 +229,7 @@
       "trunk": "Single, straight, unbranched trunk with prominent leaf scars",
       "leaves": "Pinnate fronds 3-5 meters long with 200-300 leaflets"
     },
+    "growthHabits": "tree",
     "ethnobotanicalUses": {
       "edible": "Mesocarp yields palm oil; kernels yield palm kernel oil; palm hearts eaten as vegetable; sap fermented into palm wine",
       "medicinal": "Traditional uses for treating various ailments; palm oil rich in vitamin A and E",
@@ -265,6 +269,7 @@
       "trunk": "Multiple stems, somewhat woody near base",
       "leaves": "Alternate arrangement, 7-16 cm long with pointed tips"
     },
+    "growthHabits": "shrub",
     "ethnobotanicalUses": {
       "edible": "Not edible; contains latex that can be irritating",
       "medicinal": "Used in Mexican traditional medicine for treating skin infections, warts, and to increase lactation",
@@ -296,8 +301,7 @@
     "habitat": "Native to South America, now cultivated throughout tropical and subtropical regions",
     "color": "Green to reddish-green stems with green foliage",
     "shape": "Needle-like",
-    "margin": "Smooth",
-    "growthHabits": "shrub",
+    "growthHabits": "shrub or tree",
     "foliage": "Palmate leaves with 5-9 deep lobes, glossy green",
     "bark": "Young stems green to reddish, becoming woody and grayish-brown with age",
     "flowers": "Small, yellowish-green, unisexual flowers in branched clusters",
@@ -333,7 +337,6 @@
     "habitat": "Native to Northern tropical South America, found in terrestrial environments including primary rainforests, grasslands, and savannahs",
     "color": "Green foliage, dark brown bark, pink and white flowers, black and brown fruit",
     "shape": "Ovate",
-    "margin": "Serrated",
     "growthHabits": "tree",
     "foliage": "Bipinnately-compound with small asymmetrical leaflets, green in color",
     "bark": "Dark brown, woody, becoming more fissured with age",
@@ -386,6 +389,7 @@
       "trunk": "Short main trunk (typically 2-4 m before branching)",
       "leaves": "Oblong, 15-30 cm long with pointed tips and smooth margins"
     },
+    "growthHabits": "shrub or tree",
     "ethnobotanicalUses": {
       "edible": "Seeds processed for chocolate production; pulp consumed fresh or fermented into beverages",
       "medicinal": "Traditional uses include treating fatigue, fever, heart problems; cacao contains antioxidants and mood-enhancing compounds",
