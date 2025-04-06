@@ -4,23 +4,40 @@ import torch
 import numpy as np
 
 def preprocess_image(image: Image.Image):
-    """
-    Preprocess an image for inference with the LeafSense model.
-    Uses the exact same normalization as during training.
-    """
-    # Ensure the image is in RGB mode
+    # """
+    # Preprocess an image for inference with the LeafSense model.
+    # Uses the exact same normalization as during training.
+    # """
+    # # Ensure the image is in RGB mode
+    # if image.mode != "RGB":
+    #     image = image.convert("RGB")
+    
+    # # Define preprocessing pipeline - EXACTLY match validation transforms from training
+    # preprocess = transforms.Compose([
+    #     transforms.Resize((224, 224)),
+    #     transforms.ToTensor(),
+    #     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    # ])
+    
+    # # Apply transformations and add batch dimension
+    # tensor = preprocess(image).unsqueeze(0)
+
+    print("🖼️ Preprocessing input image...")
+
     if image.mode != "RGB":
         image = image.convert("RGB")
-    
-    # Define preprocessing pipeline - EXACTLY match validation transforms from training
+        print("🔄 Converted image to RGB.")
+
     preprocess = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                             std=[0.229, 0.224, 0.225])
     ])
-    
-    # Apply transformations and add batch dimension
+
     tensor = preprocess(image).unsqueeze(0)
+    print(f"✅ Image tensor shape: {tensor.shape}")
+
     
     return tensor
 
