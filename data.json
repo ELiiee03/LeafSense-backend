@@ -39,7 +39,7 @@
   {
     "id": 1,
     "name": "Paper Mulberry",
-    "scientificName": "Broussonetia Papyrifera",
+    "scientificName": "Broussonetia papyrifera",
     "familyName": "Moraceae",
     "description": "A deciduous tree or shrub native to eastern Asia that can grow up to 15m tall. Named for its bark which has been used traditionally to make paper.",
     "habitat": "Native to eastern Asia, including Japan, China, Korea, and Taiwan. Naturalized in many parts of the world.",
@@ -82,7 +82,7 @@
   {
     "id": 2,
     "name": "Kapok",
-    "scientificName": "Ceiba Pentandra",
+    "scientificName": "Ceiba pentandra",
     "familyName": "Malvaceae",
     "description": "A massive tropical tree reaching 50-70m in height with a straight, usually buttressed trunk that often has spines. Known for its cotton-like floss (kapok) produced in its seed pods.",
     "habitat": "Native to tropical regions of the Americas, West Africa, and Southeast Asia, typically found in rainforests and seasonally wet forests",
@@ -129,7 +129,7 @@
   {
     "id": 3,
     "name": "Coconut",
-    "scientificName": "Cocos Nucifera",
+    "scientificName": "Cocos nucifera",
     "familyName": "Arecaceae",
     "description": "A large palm growing up to 30m tall with a slender, ringed, unbranched trunk that often leans. Known worldwide for its valuable fruit, the coconut, which has a fibrous husk surrounding a hard shell containing white flesh and liquid.",
     "habitat": "Native to coastal areas of the Indo-Pacific region, thrives in tropical coastal environments, often found along sandy shorelines",
@@ -175,7 +175,7 @@
   {
     "id": 4,
     "name": "Durian",
-    "scientificName": "Durio Zibethinus",
+    "scientificName": "Durio zibethinus",
     "familyName": "Malvaceae",
     "description": "Tropical tree known for its large, spiky fruit with strong odor and custard-like flesh. The fruit is polarizing, with devotees praising its rich, complex flavor while others are repelled by its powerful smell.",
     "habitat": "Lowland rainforests of Southeast Asia, primarily Malaysia, Indonesia, and Thailand",
@@ -215,7 +215,7 @@
   {
     "id": 5,
     "name": "African Oil Palm",
-    "scientificName": "Elaeis Guineensis",
+    "scientificName": "Elaeis guineensis",
     "familyName": "Arecaceae",
     "description": "Tall monocotyledonous tropical palm tree cultivated extensively for its high-yielding oil-rich fruits. It is a major source of palm oil and palm kernel oil, used in food products, cosmetics, and biofuels.",
     "habitat": "Originally from West and Central Africa, now cultivated throughout tropical regions, especially Southeast Asia",
@@ -255,7 +255,7 @@
   {
     "id": 6,
     "name": "Poinsettia",
-    "scientificName": "Euphorbia Pulcherrima",
+    "scientificName": "Euphorbia pulcherrima",
     "familyName": "Euphorbiaceae",
     "description": "Shrub or small tree known for its vibrant red bracts that are often mistaken for flowers. Popular ornamental plant associated with Christmas and winter holidays.",
     "habitat": "Native to Mexico and Central America, particularly in deciduous tropical forests",
@@ -331,7 +331,7 @@
   {
     "id": 8,
     "name": "Rain tree",
-    "scientificName": "Samanea Saman",
+    "scientificName": "Samanea saman",
     "familyName": "Fabaceae",
     "description": "A tree up to 30m tall, known for its iconic umbrella-shaped crown that provides plenty of shade. Leaflets uniquely fold up during overcast days and in the early evening, earning it the name 'Pukul Lima' (five o'clock in Malay).",
     "habitat": "Native to Northern tropical South America, found in terrestrial environments including primary rainforests, grasslands, and savannahs",
@@ -375,7 +375,7 @@
   {
     "id": 9,
     "name": "Cacao",
-    "scientificName": "Theobroma Cacao",
+    "scientificName": "Theobroma cacao",
     "familyName": "Malvaceae",
     "description": "Evergreen tree native to the deep tropical regions of the Americas. Its seeds are the source of chocolate, cocoa powder, and cocoa butter. The name 'Theobroma' means 'food of the gods' in Greek.",
     "habitat": "Understory of tropical rainforests of Central and South America",
